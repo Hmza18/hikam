@@ -1,5 +1,31 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+  const SUPABASE_URL = 'https://yfwelvmbdmtrrqdfgsny.supabase.co';
+  const SUPABASE_ANON_KEY = 'sb_publishable_BMqrpm6j9htvJrNOFiDs3g_QKmVmfAg';
+
+  window.supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+  // #region agent log
+  fetch('http://127.0.0.1:7721/ingest/f9a8f5ba-d08d-4a9e-8f17-3c694862ba16', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-Debug-Session-Id': '0c1249',
+    },
+    body: JSON.stringify({
+      sessionId: '0c1249',
+      runId: 'pre-fix',
+      hypothesisId: 'H4',
+      location: 'index.html:inline-supabase',
+      message: 'Supabase inline script ran',
+      data: { href: window.location.href },
+      timestamp: Date.now(),
+    }),
+  }).catch(function () {});
+  // #endregion agent log
+</script>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -87,6 +113,15 @@
               </li>
               <li class="gallery-slide" data-index="3">
                 <img src="assets/c__Users_PC_AppData_Roaming_Cursor_User_workspaceStorage_110188a38f0425c2055f5df42d7ff4d9_images_Imamali4-8386e6ae-69e4-4a03-9c01-f5210e30f47c.png" alt="من أعمال فنية تمثل أمير المؤمنين (ع)" loading="lazy" />
+              </li>
+              <li class="gallery-slide" data-index="4">
+                <img src="assets/c__Users_PC_AppData_Roaming_Cursor_User_workspaceStorage_110188a38f0425c2055f5df42d7ff4d9_images_imam_ali_6-6020d6c7-8f7c-4864-8266-32bce9805302.png" alt="من أعمال فنية تمثل أمير المؤمنين (ع) في المعركة" loading="lazy" />
+              </li>
+              <li class="gallery-slide" data-index="5">
+                <img src="assets/c__Users_PC_AppData_Roaming_Cursor_User_workspaceStorage_110188a38f0425c2055f5df42d7ff4d9_images_imam_ali_7-ed2a5360-9484-4012-b2ab-2b0aac1a9f74.png" alt="من أعمال فنية تمثل أمير المؤمنين (ع) في ساحة المعركة" loading="lazy" />
+              </li>
+              <li class="gallery-slide" data-index="6">
+                <img src="assets/c__Users_PC_AppData_Roaming_Cursor_User_workspaceStorage_110188a38f0425c2055f5df42d7ff4d9_images_imam_ali_8-ce83ec6d-ba32-4558-9547-a7c0093df5c6.png" alt="من أعمال فنية تمثل أمير المؤمنين (ع) — مشهد حزن وبطولة" loading="lazy" />
               </li>
             </ul>
           </div>

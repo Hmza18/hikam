@@ -1,3 +1,165 @@
+require('dotenv').config();
+
+const express = require('express');
+const path = require('path');
+const nodemailer = require('nodemailer');
+const Database = require('better-sqlite3');
+
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+// --- Database setup ---
+const db = new Database(path.join(__dirname, 'leads.db'));
+
+db.prepare(`
+  CREATE TABLE IF NOT EXISTS leads (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    email TEXT NOT NULL,
+    created_at TEXT NOT NULL
+  )
+`).run();
+
+// --- Middleware ---
+app.use(express.json());
+app.use(express.static(path.join(__dirname, 'public')));
+
+// --- Email setup ---
+function createTransporter() {
+  const host = process.env.SMTP_HOST;
+  const port = process.env.SMTP_PORT;
+  const user = process.env.SMTP_USER;
+  const pass = process.env.SMTP_PASS;
+
+  if (!host || !port || !user || !pass) {
+    throw new Error('SMTP configuration missing. Please set SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS.');
+  }
+
+  return nodemailer.createTransport({
+    host,
+    port: Number(port),
+    secure: Number(port) === 465,
+    auth: {
+      user,
+      pass
+    }
+  });
+}
+
+function validateLeadPayload(payload) {
+  const errors = {};
+
+  const name = typeof payload.name === 'string' ? payload.name.trim() : '';
+  const email = typeof payload.email === 'string' ? payload.email.trim() : '';
+
+  if (!name) {
+    errors.name = 'Please enter your name.';
+  }
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!email) {
+    errors.email = 'Please enter your email.';
+  } else if (!emailRegex.test(email)) {
+    errors.email = 'Please enter a valid email address.';
+  }
+
+  return {
+    isValid: Object.keys(errors).length === 0,
+    errors,
+    values: { name, email }
+  };
+}
+
+// --- API Routes ---
+app.post('/api/lead', async (req, res) => {
+  try {
+    const { isValid, errors, values } = validateLeadPayload(req.body || {});
+
+    if (!isValid) {
+      return res.status(400).json({ ok: false, errors });
+    }
+
+    const createdAt = new Date().toISOString();
+
+    const stmt = db.prepare(
+      'INSERT INTO leads (name, email, created_at) VALUES (?, ?, ?)'
+    );
+    const info = stmt.run(values.name, values.email, createdAt);
+
+    const leadId = info.lastInsertRowid;
+
+    let transporter;
+    try {
+      transporter = createTransporter();
+    } catch (configErr) {
+      console.error('Email configuration error:', configErr.message);
+      return res.status(500).json({
+        ok: false,
+        error: 'Server email configuration error. Please try again later.'
+      });
+    }
+
+    const toEmail = process.env.LEAD_NOTIFY_EMAIL || process.env.SMTP_USER;
+    if (!toEmail) {
+      console.error('Missing LEAD_NOTIFY_EMAIL / SMTP_USER for notifications.');
+      return res.status(500).json({
+        ok: false,
+        error: 'Server notification email is not configured.'
+      });
+    }
+
+    const mailOptions = {
+      from: `"Website Lead Capture" <${process.env.SMTP_USER}>`,
+      to: toEmail,
+      subject: 'New website visitor lead',
+      text: [
+        'You have a new website lead:',
+        '',
+        `Name:  ${values.name}`,
+        `Email: ${values.email}`,
+        `Time:  ${createdAt}`,
+        '',
+        `Lead ID: ${leadId}`
+      ].join('\n')
+    };
+
+    try {
+      await transporter.sendMail(mailOptions);
+    } catch (emailErr) {
+      console.error('Error sending lead email:', emailErr);
+      return res.status(500).json({
+        ok: false,
+        error: 'Could not send confirmation email. Please try again shortly.'
+      });
+    }
+
+    return res.status(200).json({
+      ok: true,
+      lead: {
+        id: leadId,
+        name: values.name,
+        email: values.email,
+        created_at: createdAt
+      }
+    });
+  } catch (err) {
+    console.error('Unexpected error in /api/lead:', err);
+    return res.status(500).json({
+      ok: false,
+      error: 'An unexpected server error occurred.'
+    });
+  }
+});
+
+// Fallback: serve index.html for root
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
+app.listen(PORT, () => {
+  console.log(`Lead capture app listening on http://localhost:${PORT}`);
+});
+
 const path = require("path");
 const fs = require("fs");
 const express = require("express");

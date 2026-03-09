@@ -6,6 +6,29 @@
 (function () {
   "use strict";
 
+  function getSupabaseClient() {
+    return window.supabaseClient || null;
+  }
+
+  // #region agent log
+  fetch("http://127.0.0.1:7721/ingest/f9a8f5ba-d08d-4a9e-8f17-3c694862ba16", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "X-Debug-Session-Id": "0c1249",
+    },
+    body: JSON.stringify({
+      sessionId: "0c1249",
+      runId: "pre-fix",
+      hypothesisId: "H1",
+      location: "script.js:top",
+      message: "script.js loaded",
+      data: { href: window.location.href },
+      timestamp: Date.now(),
+    }),
+  }).catch(function () {});
+  // #endregion agent log
+
   const quotes = [
     {
       id: 1,
@@ -1112,6 +1135,56 @@
     renderQuote(quote);
   }
 
+  async function handleLoginClick() {
+    console.log("handleLoginClick called");
+    // #region agent log
+    fetch("http://127.0.0.1:7721/ingest/f9a8f5ba-d08d-4a9e-8f17-3c694862ba16", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-Debug-Session-Id": "0c1249",
+      },
+      body: JSON.stringify({
+        sessionId: "0c1249",
+        runId: "pre-fix",
+        hypothesisId: "H2",
+        location: "script.js:handleLoginClick",
+        message: "handleLoginClick invoked",
+        data: {},
+        timestamp: Date.now(),
+      }),
+    }).catch(function () {});
+    // #endregion agent log
+    const supabase = getSupabaseClient();
+    if (!supabase) {
+      console.warn("Supabase client not available on window.supabaseClient");
+      alert("تسجيل الدخول غير مُهيّأ بعد. تأكد من إعداد مفاتيح Supabase في الصفحة.");
+      return;
+    }
+    const email = prompt("أدخل البريد الإلكتروني المسجَّل في حسابك:");
+    if (!email) return;
+    const password = prompt("أدخل كلمة المرور:");
+    if (!password) return;
+
+    try {
+      const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+      if (error) {
+        console.error("Supabase login error:", error);
+        alert("تعذّر تسجيل الدخول: " + (error.message || "خطأ غير متوقّع."));
+        return;
+      }
+
+      console.log("Supabase login success:", data);
+      alert("تم تسجيل الدخول بنجاح.");
+    } catch (e) {
+      console.error("Unexpected Supabase error:", e);
+      alert("حدث خطأ غير متوقّع أثناء تسجيل الدخول. يرجى المحاولة مرة أخرى.");
+    }
+  }
+
+  // Make login handler available for inline onclick if needed
+  window.handleLoginClick = handleLoginClick;
+
   function init() {
     quoteTextEl = document.getElementById("quote-text");
     personEl = document.getElementById("quote-person");
@@ -1139,6 +1212,26 @@
     topicTitleEl = document.getElementById("topic-title");
     topicDescriptionEl = document.getElementById("topic-description");
     topicHikamListEl = document.getElementById("topic-hikam-list");
+    var loginButton = document.getElementById("login-button");
+
+    // #region agent log
+    fetch("http://127.0.0.1:7721/ingest/f9a8f5ba-d08d-4a9e-8f17-3c694862ba16", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-Debug-Session-Id": "0c1249",
+      },
+      body: JSON.stringify({
+        sessionId: "0c1249",
+        runId: "pre-fix",
+        hypothesisId: "H3",
+        location: "script.js:init",
+        message: "init called, loginButton lookup",
+        data: { hasLoginButton: !!loginButton },
+        timestamp: Date.now(),
+      }),
+    }).catch(function () {});
+    // #endregion agent log
 
     if (!quoteTextEl || !personEl || !sourceEl) return;
 
@@ -1261,6 +1354,10 @@
         if (this.checked) applyPalette(this.value);
       });
     });
+
+    if (loginButton) {
+      loginButton.addEventListener("click", handleLoginClick);
+    }
   }
 
   /* ----- Gallery carousel ----- */
