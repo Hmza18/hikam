@@ -446,9 +446,24 @@ api.post("/hikam/:id/wallpaper", (req, res) => {
 
 app.use("/api", api);
 
+// Explicit root handler so "/" always serves the app (works when static bundle path differs on Vercel)
+app.get("/", (req, res) => {
+  const roots = [ROOT_DIR, process.cwd()];
+  function sendFrom(i) {
+    if (i >= roots.length) {
+      return res.status(404).json({ error: "Not Found" });
+    }
+    const indexPath = path.join(roots[i], "index.html");
+    res.sendFile(indexPath, (err) => {
+      if (err) sendFrom(i + 1);
+    });
+  }
+  sendFrom(0);
+});
+
 app.use(
   express.static(ROOT_DIR, {
-    index: "index.html"
+    index: false
   })
 );
 
