@@ -1375,6 +1375,16 @@
   /* ----- Gallery carousel ----- */
   var GALLERY_PLACEHOLDER_DATAURL = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='250' viewBox='0 0 400 250'%3E%3Crect fill='%2327272f' width='400' height='250'/%3E%3Ctext x='200' y='125' dominant-baseline='middle' text-anchor='middle' fill='%236366f1' font-size='18'%3E%3C/text%3E%3C/svg%3E";
 
+  function getAssetBase() {
+    var origin = window.location.origin;
+    var pathname = window.location.pathname || "/";
+    var base = origin + pathname;
+    if (!/\/$/.test(base)) {
+      base = base.replace(/\/[^/]*$/, "/");
+    }
+    return base;
+  }
+
   function initGallery() {
     const track = document.getElementById("gallery-track");
     const prevBtn = document.getElementById("gallery-prev");
@@ -1386,12 +1396,20 @@
     const total = slides.length;
     if (total === 0) return;
 
-    slides.forEach(function (slide) {
+    var base = getAssetBase();
+    slides.forEach(function (slide, i) {
       var img = slide.querySelector("img");
-      if (img && GALLERY_PLACEHOLDER_DATAURL) {
-        img.addEventListener("error", function () {
-          this.src = GALLERY_PLACEHOLDER_DATAURL;
-        });
+      if (img) {
+        var idx = slide.getAttribute("data-index");
+        if (idx !== null) {
+          var n = parseInt(idx, 10) + 1;
+          img.src = base + "assets/imam-ali-" + n + ".png";
+        }
+        if (GALLERY_PLACEHOLDER_DATAURL) {
+          img.addEventListener("error", function () {
+            this.src = GALLERY_PLACEHOLDER_DATAURL;
+          });
+        }
       }
     });
 

@@ -448,17 +448,19 @@ app.use("/api", api);
 
 // Explicit root handler so "/" always serves the app (works when static bundle path differs on Vercel)
 app.get("/", (req, res) => {
-  const roots = [ROOT_DIR, process.cwd()];
-  function sendFrom(i) {
+  const roots = [ROOT_DIR, process.cwd(), path.join(__dirname, "..")];
+  function trySend(i) {
     if (i >= roots.length) {
       return res.status(404).json({ error: "Not Found" });
     }
     const indexPath = path.join(roots[i], "index.html");
-    res.sendFile(indexPath, (err) => {
-      if (err) sendFrom(i + 1);
-    });
+    if (fs.existsSync(indexPath)) {
+      res.type("html");
+      return res.send(fs.readFileSync(indexPath, "utf8"));
+    }
+    trySend(i + 1);
   }
-  sendFrom(0);
+  trySend(0);
 });
 
 app.use(
