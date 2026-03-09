@@ -911,23 +911,131 @@
     showMainView();
   }
 
+  /**
+   * Render Instagram-style square card to canvas (no html2canvas).
+   * Returns a canvas ready for toDataURL/download. Size 1080x1080.
+   */
+  function renderInstagramCardToCanvas(quote, palette, width, height) {
+    width = width || 1080;
+    height = height || 1080;
+    var colors = WALLPAPER_PALETTE_COLORS[palette] || WALLPAPER_PALETTE_COLORS.classic;
+    var canvas = document.createElement("canvas");
+    canvas.width = width;
+    canvas.height = height;
+    var ctx = canvas.getContext("2d");
+    if (!ctx) return null;
+
+    ctx.fillStyle = colors.bg;
+    ctx.fillRect(0, 0, width, height);
+
+    var maxRadius = Math.max(width, height) * 0.7;
+    var vignette = ctx.createRadialGradient(width / 2, height / 2, width * 0.1, width / 2, height / 2, maxRadius);
+    vignette.addColorStop(0, "rgba(0,0,0,0)");
+    vignette.addColorStop(1, "rgba(0,0,0,0.18)");
+    ctx.fillStyle = vignette;
+    ctx.fillRect(0, 0, width, height);
+
+    var borderColor = colors.border || colors.text;
+    var outerThickness = Math.max(4, Math.round(width * 0.004));
+    var innerThickness = Math.max(2, Math.round(width * 0.002));
+    var gap = Math.round(outerThickness * 1.5);
+
+    ctx.strokeStyle = borderColor;
+    ctx.lineWidth = outerThickness;
+    var outerOffset = outerThickness / 2;
+    ctx.strokeRect(outerOffset, outerOffset, width - outerThickness, height - outerThickness);
+
+    var innerMargin = outerThickness + gap;
+    var innerOffset = innerMargin + innerThickness / 2;
+    var innerW = width - 2 * innerMargin - innerThickness;
+    var innerH = height - 2 * innerMargin - innerThickness;
+    if (innerW > 0 && innerH > 0) {
+      ctx.lineWidth = innerThickness;
+      ctx.strokeRect(innerOffset, innerOffset, innerW, innerH);
+    }
+
+    var paddingPct = 0.08;
+    var maxTextWidth = width * (1 - 2 * paddingPct);
+    var centerX = width / 2;
+    var quoteFontSize = Math.round(width * 0.055);
+    var personFontSize = Math.round(width * 0.028);
+    var logoFontSize = Math.round(width * 0.022);
+    var lineHeight = 1.7;
+    var quoteFont = "700 " + quoteFontSize + "px Amiri, serif";
+    var personFont = "600 " + personFontSize + "px Amiri, serif";
+    var logoFont = "600 " + logoFontSize + "px Amiri, serif";
+
+    ctx.direction = "rtl";
+    ctx.textAlign = "center";
+
+    function wrapLines(text, font, maxW) {
+      ctx.font = font;
+      var words = text.split(/\s+/);
+      var lines = [];
+      var current = "";
+      for (var i = 0; i < words.length; i++) {
+        var test = current ? current + " " + words[i] : words[i];
+        if (ctx.measureText(test).width <= maxW) {
+          current = test;
+        } else {
+          if (current) lines.push(current);
+          current = words[i];
+        }
+      }
+      if (current) lines.push(current);
+      return lines;
+    }
+
+    var quoteLines = wrapLines(quote.text_ar, quoteFont, maxTextWidth);
+    var lineHeightPx = quoteFontSize * lineHeight;
+    var totalQuoteHeight = quoteLines.length * lineHeightPx;
+    var personGap = personFontSize * 0.8;
+    var logoAreaH = height * 0.1;
+    var safeTop = height * 0.12;
+    var safeBottom = height * 0.14;
+    var contentHeight = totalQuoteHeight + personGap + personFontSize;
+    var availableVert = height - safeTop - safeBottom - logoAreaH;
+    var contentTop = safeTop + Math.max(0, (availableVert - contentHeight) / 2);
+    var startY = contentTop + quoteFontSize;
+
+    ctx.fillStyle = colors.text;
+    ctx.font = quoteFont;
+    for (var j = 0; j < quoteLines.length; j++) {
+      ctx.fillText(quoteLines[j], centerX, startY + j * lineHeightPx);
+    }
+
+    var personY = startY + quoteLines.length * lineHeightPx + personGap;
+    ctx.fillStyle = colors.person;
+    ctx.font = personFont;
+    ctx.fillText(quote.person, centerX, personY);
+
+    ctx.fillStyle = colors.logo;
+    ctx.font = logoFont;
+    ctx.fillText("\u062D\u0643\u0645", centerX, height - logoAreaH / 2);
+
+    return canvas;
+  }
+
   function downloadInstagramCard() {
-    if (!hikmaInstagramCardEl || !currentQuote) return;
-    if (typeof html2canvas === "undefined") {
-      alert("تحميل الصورة غير متاح حالياً. جرّب لاحقاً.");
+    if (!currentQuote) return;
+    var palette = getCurrentPalette();
+    var canvas = renderInstagramCardToCanvas(currentQuote, palette, 1080, 1080);
+    if (!canvas) {
+      alert("لم يتم إنشاء الصورة. جرّب مرة أخرى.");
       return;
     }
-    html2canvas(hikmaInstagramCardEl, {
-      scale: 2,
-      useCORS: true,
-      backgroundColor: null,
-      logging: false,
-    }).then(function (canvas) {
-      const link = document.createElement("a");
+    try {
+      var link = document.createElement("a");
       link.download = "hikma-" + currentQuote.id + ".png";
       link.href = canvas.toDataURL("image/png");
+      link.rel = "noopener";
+      document.body.appendChild(link);
       link.click();
-    });
+      document.body.removeChild(link);
+    } catch (e) {
+      console.error("Instagram card download error:", e);
+      alert("تعذّر حفظ الصورة. جرّب متصفحاً آخر.");
+    }
   }
 
   function getCurrentPalette() {
@@ -1265,6 +1373,8 @@
   }
 
   /* ----- Gallery carousel ----- */
+  var GALLERY_PLACEHOLDER_DATAURL = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='250' viewBox='0 0 400 250'%3E%3Crect fill='%2327272f' width='400' height='250'/%3E%3Ctext x='200' y='125' dominant-baseline='middle' text-anchor='middle' fill='%236366f1' font-size='18'%3E%3C/text%3E%3C/svg%3E";
+
   function initGallery() {
     const track = document.getElementById("gallery-track");
     const prevBtn = document.getElementById("gallery-prev");
@@ -1275,6 +1385,15 @@
     const slides = track.querySelectorAll(".gallery-slide");
     const total = slides.length;
     if (total === 0) return;
+
+    slides.forEach(function (slide) {
+      var img = slide.querySelector("img");
+      if (img && GALLERY_PLACEHOLDER_DATAURL) {
+        img.addEventListener("error", function () {
+          this.src = GALLERY_PLACEHOLDER_DATAURL;
+        });
+      }
+    });
 
     let currentIndex = 0;
 

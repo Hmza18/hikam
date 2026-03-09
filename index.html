@@ -6,7 +6,10 @@
     <script>
       (function () {
         var t = localStorage.getItem("hikma-theme");
-        if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+        if (t !== "light" && t !== "dark") {
+          t = typeof window.matchMedia !== "undefined" && window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+        }
+        document.documentElement.setAttribute("data-theme", t);
       })();
     </script>
     <title>حِكَم المعصومين الأربعة عشر (ع) — من النبي (ص) إلى المهدي (عج)</title>
@@ -70,32 +73,35 @@
 
     <!-- Main app: gallery + explore wisdom -->
     <div id="main-view" class="page">
-      <!-- Image gallery carousel -->
+      <!-- Image gallery carousel — أعمال فنية تمثل أمير المؤمنين (ع) -->
       <section id="gallery" class="gallery-section" aria-labelledby="gallery-heading">
         <h2 id="gallery-heading" class="gallery-title">معرض الصور</h2>
         <div class="gallery-carousel" role="region" aria-roledescription="carousel" aria-label="معرض صور">
           <div class="gallery-track-container">
-            <ul class="gallery-track" id="gallery-track" style="--current-index: 0">
+            <ul class="gallery-track" id="gallery-track" style="--current-index: 0; --track-width: 800; --slide-count: 8">
               <li class="gallery-slide" data-index="0">
-                <img src="assets/c__Users_PC_AppData_Roaming_Cursor_User_workspaceStorage_110188a38f0425c2055f5df42d7ff4d9_images_IMAM_ALI-ccc0307c-74ca-439e-8ae3-551c58ad16bc.png" alt="من أعمال فنية تمثل أمير المؤمنين (ع)" loading="lazy" />
+                <img src="./assets/imam-ali-1.png" alt="أمير المؤمنين علي (ع) — منظر مهيب تحت القمر" loading="eager" decoding="async" />
               </li>
               <li class="gallery-slide" data-index="1">
-                <img src="assets/c__Users_PC_AppData_Roaming_Cursor_User_workspaceStorage_110188a38f0425c2055f5df42d7ff4d9_images_Imam_ali2-a66bdd48-f482-427d-82f7-4c64836ba615.png" alt="من أعمال فنية تمثل أمير المؤمنين (ع)" loading="lazy" />
+                <img src="./assets/imam-ali-2.png" alt="أمير المؤمنين علي (ع) — فارس بالسيف تحت القمر" loading="lazy" decoding="async" />
               </li>
               <li class="gallery-slide" data-index="2">
-                <img src="assets/c__Users_PC_AppData_Roaming_Cursor_User_workspaceStorage_110188a38f0425c2055f5df42d7ff4d9_images_Imamali3-2a7d524b-a961-46c8-8e06-0f1ea102fea6.png" alt="من أعمال فنية تمثل أمير المؤمنين (ع)" loading="lazy" />
+                <img src="./assets/imam-ali-3.png" alt="أمير المؤمنين علي (ع) — رفع باب خيبر" loading="lazy" decoding="async" />
               </li>
               <li class="gallery-slide" data-index="3">
-                <img src="assets/c__Users_PC_AppData_Roaming_Cursor_User_workspaceStorage_110188a38f0425c2055f5df42d7ff4d9_images_Imamali4-8386e6ae-69e4-4a03-9c01-f5210e30f47c.png" alt="من أعمال فنية تمثل أمير المؤمنين (ع)" loading="lazy" />
+                <img src="./assets/imam-ali-4.png" alt="أمير المؤمنين علي (ع) — مشهد بطولي" loading="lazy" decoding="async" />
               </li>
               <li class="gallery-slide" data-index="4">
-                <img src="assets/c__Users_PC_AppData_Roaming_Cursor_User_workspaceStorage_110188a38f0425c2055f5df42d7ff4d9_images_imam_ali_6-6020d6c7-8f7c-4864-8266-32bce9805302.png" alt="من أعمال فنية تمثل أمير المؤمنين (ع) في المعركة" loading="lazy" />
+                <img src="./assets/imam-ali-5.png" alt="أمير المؤمنين علي (ع) — في ساحة المعركة" loading="lazy" decoding="async" />
               </li>
               <li class="gallery-slide" data-index="5">
-                <img src="assets/c__Users_PC_AppData_Roaming_Cursor_User_workspaceStorage_110188a38f0425c2055f5df42d7ff4d9_images_imam_ali_7-ed2a5360-9484-4012-b2ab-2b0aac1a9f74.png" alt="من أعمال فنية تمثل أمير المؤمنين (ع) في ساحة المعركة" loading="lazy" />
+                <img src="./assets/imam-ali-6.png" alt="أمير المؤمنين علي (ع) — مشهد حزن وبطولة" loading="lazy" decoding="async" />
               </li>
               <li class="gallery-slide" data-index="6">
-                <img src="assets/c__Users_PC_AppData_Roaming_Cursor_User_workspaceStorage_110188a38f0425c2055f5df42d7ff4d9_images_imam_ali_8-ce83ec6d-ba32-4558-9547-a7c0093df5c6.png" alt="من أعمال فنية تمثل أمير المؤمنين (ع) — مشهد حزن وبطولة" loading="lazy" />
+                <img src="./assets/imam-ali-7.png" alt="أمير المؤمنين علي (ع) — الفارس أمام الجيش" loading="lazy" decoding="async" />
+              </li>
+              <li class="gallery-slide" data-index="7">
+                <img src="./assets/imam-ali-8.png" alt="أمير المؤمنين علي (ع) — قائد المعركة" loading="lazy" decoding="async" />
               </li>
             </ul>
           </div>
@@ -348,7 +354,6 @@
     <!-- Off-screen wallpaper canvas (for capture); dimensions set by JS -->
     <div id="hikma-wallpaper-source" class="hikma-wallpaper-source" aria-hidden="true" hidden></div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGbGcp9iG8NDqG5b2W/pBYZdPA2N8FM2A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="./script.js"></script>
   </body>
 </html>
