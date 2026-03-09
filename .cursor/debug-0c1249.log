@@ -1,0 +1,50 @@
+{"sessionId":"0c1249","runId":"pre-fix","hypothesisId":"H4","location":"index.html:inline-supabase","message":"Supabase inline script ran","data":{"href":"http://localhost:60902/"},"timestamp":1773028528792}
+{"sessionId":"0c1249","runId":"pre-fix","hypothesisId":"H1","location":"script.js:top","message":"script.js loaded","data":{"href":"http://localhost:60902/"},"timestamp":1773028529016}
+{"sessionId":"0c1249","runId":"pre-fix","hypothesisId":"H3","location":"script.js:init","message":"init called, loginButton lookup","data":{"hasLoginButton":true},"timestamp":1773028529017}
+{"sessionId":"0c1249","runId":"pre-fix","hypothesisId":"H4","location":"index.html:inline-supabase","message":"Supabase inline script ran","data":{"href":"http://localhost:60902/"},"timestamp":1773028719434}
+{"sessionId":"0c1249","runId":"pre-fix","hypothesisId":"H1","location":"script.js:top","message":"script.js loaded","data":{"href":"http://localhost:60902/"},"timestamp":1773028719657}
+{"sessionId":"0c1249","runId":"pre-fix","hypothesisId":"H3","location":"script.js:init","message":"init called, loginButton lookup","data":{"hasLoginButton":true},"timestamp":1773028719667}
+{"sessionId":"0c1249","runId":"pre-fix","hypothesisId":"H2","location":"script.js:handleLoginClick","message":"handleLoginClick invoked","data":{},"timestamp":1773028731760}
+{"sessionId":"0c1249","runId":"pre-fix","hypothesisId":"H2","location":"script.js:handleLoginClick","message":"handleLoginClick invoked","data":{},"timestamp":1773028731761}
+{"sessionId":"0c1249","runId":"pre-fix","hypothesisId":"H2","location":"script.js:handleLoginClick","message":"handleLoginClick invoked","data":{},"timestamp":1773028732325}
+{"sessionId":"0c1249","runId":"pre-fix","hypothesisId":"H2","location":"script.js:handleLoginClick","message":"handleLoginClick invoked","data":{},"timestamp":1773028732326}
+{"sessionId":"0c1249","runId":"pre-fix","hypothesisId":"H2","location":"script.js:handleLoginClick","message":"handleLoginClick invoked","data":{},"timestamp":1773028732607}
+{"sessionId":"0c1249","runId":"pre-fix","hypothesisId":"H2","location":"script.js:handleLoginClick","message":"handleLoginClick invoked","data":{},"timestamp":1773028732607}
+{"sessionId":"0c1249","runId":"pre-fix","hypothesisId":"H2","location":"script.js:handleLoginClick","message":"handleLoginClick invoked","data":{},"timestamp":1773028732771}
+{"sessionId":"0c1249","runId":"pre-fix","hypothesisId":"H2","location":"script.js:handleLoginClick","message":"handleLoginClick invoked","data":{},"timestamp":1773028732772}
+{"sessionId":"0c1249","runId":"pre-fix","hypothesisId":"H2","location":"script.js:handleLoginClick","message":"handleLoginClick invoked","data":{},"timestamp":1773028733098}
+{"sessionId":"0c1249","runId":"pre-fix","hypothesisId":"H2","location":"script.js:handleLoginClick","message":"handleLoginClick invoked","data":{},"timestamp":1773028733098}
+{"sessionId":"0c1249","runId":"pre-fix","hypothesisId":"H2","location":"script.js:handleLoginClick","message":"handleLoginClick invoked","data":{},"timestamp":1773028750445}
+{"sessionId":"0c1249","runId":"pre-fix","hypothesisId":"H2","location":"script.js:handleLoginClick","message":"handleLoginClick invoked","data":{},"timestamp":1773028750446}
+{"sessionId":"0c1249","runId":"pre-fix","hypothesisId":"H2","location":"script.js:handleLoginClick","message":"handleLoginClick invoked","data":{},"timestamp":1773028750735}
+{"sessionId":"0c1249","runId":"pre-fix","hypothesisId":"H2","location":"script.js:handleLoginClick","message":"handleLoginClick invoked","data":{},"timestamp":1773028750736}
+{"sessionId":"0c1249","runId":"pre-fix","hypothesisId":"H2","location":"script.js:handleLoginClick","message":"handleLoginClick invoked","data":{},"timestamp":1773028751000}
+{"sessionId":"0c1249","runId":"pre-fix","hypothesisId":"H2","location":"script.js:handleLoginClick","message":"handleLoginClick invoked","data":{},"timestamp":1773028751000}
+{"sessionId":"0c1249","runId":"pre-fix","hypothesisId":"H4","location":"index.html:inline-supabase","message":"Supabase inline script ran","data":{"href":"http://localhost:60902/"},"timestamp":1773028841017}
+{"sessionId":"0c1249","runId":"pre-fix","hypothesisId":"H1","location":"script.js:top","message":"script.js loaded","data":{"href":"http://localhost:60902/"},"timestamp":1773028841239}
+{"sessionId":"0c1249","runId":"pre-fix","hypothesisId":"H3","location":"script.js:init","message":"init called, loginButton lookup","data":{"hasLoginButton":true},"timestamp":1773028841240}
+{"sessionId":"0c1249","runId":"pre-fix","hypothesisId":"H2","location":"script.js:handleLoginClick","message":"handleLoginClick invoked","data":{},"timestamp":1773028841977}
+{"sessionId":"0c1249","runId":"pre-fix","hypothesisId":"H2","location":"script.js:handleLoginClick","message":"handleLoginClick invoked","data":{},"timestamp":1773028843133}
+{"sessionId":"0c1249","runId":"pre-fix","hypothesisId":"H2","location":"script.js:handleLoginClick","message":"handleLoginClick invoked","data":{},"timestamp":1773028843373}
+{"sessionId":"0c1249","runId":"pre-fix","hypothesisId":"H2","location":"script.js:handleLoginClick","message":"handleLoginClick invoked","data":{},"timestamp":1773028843544}
+{"sessionId":"0c1249","runId":"pre-fix","hypothesisId":"H2","location":"script.js:handleLoginClick","message":"handleLoginClick invoked","data":{},"timestamp":1773028844042}
+{"sessionId":"0c1249","runId":"pre-fix","hypothesisId":"H2","location":"script.js:handleLoginClick","message":"handleLoginClick invoked","data":{},"timestamp":1773028844042}
+{"sessionId":"0c1249","runId":"pre-fix","hypothesisId":"H2","location":"script.js:handleLoginClick","message":"handleLoginClick invoked","data":{},"timestamp":1773028846294}
+{"sessionId":"0c1249","runId":"pre-fix","hypothesisId":"H2","location":"script.js:handleLoginClick","message":"handleLoginClick invoked","data":{},"timestamp":1773028846468}
+{"sessionId":"0c1249","runId":"pre-fix","hypothesisId":"H2","location":"script.js:handleLoginClick","message":"handleLoginClick invoked","data":{},"timestamp":1773028847624}
+{"sessionId":"0c1249","runId":"pre-fix","hypothesisId":"H2","location":"script.js:handleLoginClick","message":"handleLoginClick invoked","data":{},"timestamp":1773028847770}
+{"sessionId":"0c1249","runId":"pre-fix","hypothesisId":"H2","location":"script.js:handleLoginClick","message":"handleLoginClick invoked","data":{},"timestamp":1773028847940}
+{"sessionId":"0c1249","runId":"pre-fix","hypothesisId":"H4","location":"index.html:inline-supabase","message":"Supabase inline script ran","data":{"href":"http://localhost:60902/"},"timestamp":1773028940896}
+{"sessionId":"0c1249","runId":"pre-fix","hypothesisId":"H1","location":"script.js:top","message":"script.js loaded","data":{"href":"http://localhost:60902/"},"timestamp":1773028941116}
+{"sessionId":"0c1249","runId":"pre-fix","hypothesisId":"H3","location":"script.js:init","message":"init called, loginButton lookup","data":{"hasLoginButton":true},"timestamp":1773028941121}
+{"sessionId":"0c1249","runId":"pre-fix","hypothesisId":"H2","location":"script.js:handleLoginClick","message":"handleLoginClick invoked","data":{},"timestamp":1773028941757}
+{"sessionId":"0c1249","runId":"pre-fix","hypothesisId":"H2","location":"script.js:handleLoginClick","message":"handleLoginClick invoked","data":{},"timestamp":1773028941758}
+{"sessionId":"0c1249","runId":"pre-fix","hypothesisId":"H4","location":"index.html:inline-supabase","message":"Supabase inline script ran","data":{"href":"http://localhost:60902/"},"timestamp":1773028976610}
+{"sessionId":"0c1249","runId":"pre-fix","hypothesisId":"H1","location":"script.js:top","message":"script.js loaded","data":{"href":"http://localhost:60902/"},"timestamp":1773028976937}
+{"sessionId":"0c1249","runId":"pre-fix","hypothesisId":"H3","location":"script.js:init","message":"init called, loginButton lookup","data":{"hasLoginButton":false},"timestamp":1773028976938}
+{"sessionId":"0c1249","runId":"pre-fix","hypothesisId":"H4","location":"index.html:inline-supabase","message":"Supabase inline script ran","data":{"href":"http://localhost:60902/"},"timestamp":1773029335781}
+{"sessionId":"0c1249","runId":"pre-fix","hypothesisId":"H1","location":"script.js:top","message":"script.js loaded","data":{"href":"http://localhost:60902/"},"timestamp":1773029336007}
+{"sessionId":"0c1249","runId":"pre-fix","hypothesisId":"H3","location":"script.js:init","message":"init called, loginButton lookup","data":{"hasLoginButton":false},"timestamp":1773029336008}
+{"sessionId":"0c1249","runId":"pre-fix","hypothesisId":"H4","location":"index.html:inline-supabase","message":"Supabase inline script ran","data":{"href":"http://localhost:60902/"},"timestamp":1773029400164}
+{"sessionId":"0c1249","runId":"pre-fix","hypothesisId":"H1","location":"script.js:top","message":"script.js loaded","data":{"href":"http://localhost:60902/"},"timestamp":1773029400398}
+{"sessionId":"0c1249","runId":"pre-fix","hypothesisId":"H3","location":"script.js:init","message":"init called, loginButton lookup","data":{"hasLoginButton":false},"timestamp":1773029400399}

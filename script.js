@@ -10,25 +10,6 @@
     return window.supabaseClient || null;
   }
 
-  // #region agent log
-  fetch("http://127.0.0.1:7721/ingest/f9a8f5ba-d08d-4a9e-8f17-3c694862ba16", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "X-Debug-Session-Id": "0c1249",
-    },
-    body: JSON.stringify({
-      sessionId: "0c1249",
-      runId: "pre-fix",
-      hypothesisId: "H1",
-      location: "script.js:top",
-      message: "script.js loaded",
-      data: { href: window.location.href },
-      timestamp: Date.now(),
-    }),
-  }).catch(function () {});
-  // #endregion agent log
-
   const quotes = [
     {
       id: 1,
@@ -1136,25 +1117,6 @@
   }
 
   async function handleLoginClick() {
-    console.log("handleLoginClick called");
-    // #region agent log
-    fetch("http://127.0.0.1:7721/ingest/f9a8f5ba-d08d-4a9e-8f17-3c694862ba16", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "X-Debug-Session-Id": "0c1249",
-      },
-      body: JSON.stringify({
-        sessionId: "0c1249",
-        runId: "pre-fix",
-        hypothesisId: "H2",
-        location: "script.js:handleLoginClick",
-        message: "handleLoginClick invoked",
-        data: {},
-        timestamp: Date.now(),
-      }),
-    }).catch(function () {});
-    // #endregion agent log
     const supabase = getSupabaseClient();
     if (!supabase) {
       console.warn("Supabase client not available on window.supabaseClient");
@@ -1213,25 +1175,6 @@
     topicDescriptionEl = document.getElementById("topic-description");
     topicHikamListEl = document.getElementById("topic-hikam-list");
     var loginButton = document.getElementById("login-button");
-
-    // #region agent log
-    fetch("http://127.0.0.1:7721/ingest/f9a8f5ba-d08d-4a9e-8f17-3c694862ba16", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "X-Debug-Session-Id": "0c1249",
-      },
-      body: JSON.stringify({
-        sessionId: "0c1249",
-        runId: "pre-fix",
-        hypothesisId: "H3",
-        location: "script.js:init",
-        message: "init called, loginButton lookup",
-        data: { hasLoginButton: !!loginButton },
-        timestamp: Date.now(),
-      }),
-    }).catch(function () {});
-    // #endregion agent log
 
     if (!quoteTextEl || !personEl || !sourceEl) return;
 

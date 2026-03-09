@@ -2,29 +2,18 @@
 <html lang="ar" dir="rtl">
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-  const SUPABASE_URL = 'https://yfwelvmbdmtrrqdfgsny.supabase.co';
-  const SUPABASE_ANON_KEY = 'sb_publishable_BMqrpm6j9htvJrNOFiDs3g_QKmVmfAg';
-
-  window.supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-
-  // #region agent log
-  fetch('http://127.0.0.1:7721/ingest/f9a8f5ba-d08d-4a9e-8f17-3c694862ba16', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'X-Debug-Session-Id': '0c1249',
-    },
-    body: JSON.stringify({
-      sessionId: '0c1249',
-      runId: 'pre-fix',
-      hypothesisId: 'H4',
-      location: 'index.html:inline-supabase',
-      message: 'Supabase inline script ran',
-      data: { href: window.location.href },
-      timestamp: Date.now(),
-    }),
-  }).catch(function () {});
-  // #endregion agent log
+  try {
+    if (typeof window.supabase !== 'undefined') {
+      window.supabaseClient = window.supabase.createClient(
+        'https://yfwelvmbdmtrrqdfgsny.supabase.co',
+        'sb_publishable_BMqrpm6j9htvJrNOFiDs3g_QKmVmfAg'
+      );
+    } else {
+      window.supabaseClient = null;
+    }
+  } catch (e) {
+    window.supabaseClient = null;
+  }
 </script>
   <head>
     <meta charset="UTF-8" />
