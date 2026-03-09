@@ -1,0 +1,28 @@
+{
+  "name": "hikma-platform",
+  "version": "0.1.0",
+  "description": "Backend and static frontend for the Hikma platform (حِكَم المعصومين الأربعة عشر).",
+  "main": "server.js",
+  "scripts": {
+    "dev": "node server.js",
+    "start": "node server.js"
+  },
+  "keywords": [
+    "hikma",
+    "wisdom",
+    "islamic",
+    "express",
+    "api"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "morgan": "^1.10.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
+

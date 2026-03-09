@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      (function () {
+        var t = localStorage.getItem("hikma-theme");
+        if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+      })();
+    </script>
+    <title>حِكَم المعصومين الأربعة عشر (ع) — من النبي (ص) إلى المهدي (عج)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cairo:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <!-- Landing: nav + hero + intro + explore + about + footer -->
+    <div id="landing-view">
+      <!-- Global navigation -->
+      <nav class="site-nav" aria-label="التنقل الرئيسي">
+        <div class="site-nav-inner">
+          <a class="site-nav-logo" href="#home">حِكَم</a>
+          <button type="button" class="theme-toggle" id="theme-toggle" aria-label="تبديل المظهر (فاتح / داكن)" aria-pressed="false" title="تبديل المظهر">
+            <span class="theme-toggle-thumb" aria-hidden="true"></span>
+            <span class="theme-toggle-icon theme-toggle-icon--sun" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+            </span>
+            <span class="theme-toggle-icon theme-toggle-icon--moon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+            </span>
+          </button>
+          <ul class="site-nav-links">
+            <li><a class="site-nav-link" href="#home">الرئيسية</a></li>
+            <li><a class="site-nav-link" href="#gallery">معرض الصور</a></li>
+            <li><a class="site-nav-link" href="#explore">استكشف الحِكَم</a></li>
+            <li><a class="site-nav-link" href="#topics">استكشاف المواضيع</a></li>
+            <li><a class="site-nav-link" href="#about">من نحن</a></li>
+          </ul>
+        </div>
+      </nav>
+
+      <!-- Hero section -->
+      <header id="home" class="hero">
+      <div class="hero-bg" aria-hidden="true"></div>
+      <div class="hero-inner">
+        <p class="hero-badge">من أقوال المعصومين الأربعة عشر (ع)</p>
+        <h1 class="hero-title">حِكَم المعصومين<br />من النبي (ص) إلى المهدي (عج)</h1>
+        <p class="hero-tagline">
+          حِكَم المعصومين الأربعة عشر من النبي محمد (ص) إلى الإمام المهدي (عج)، من نهج البلاغة وكتب الحديث المعتمدة، مع تفسير مختصر وتصميم جاهز للمشاركة.
+        </p>
+        <a class="hero-cta primary-button" href="#explore">استكشف الحِكَم</a>
+      </div>
+      <div class="hero-ornament" aria-hidden="true"></div>
+    </header>
+
+    <!-- Intro / value proposition -->
+    <section class="intro" aria-labelledby="intro-heading">
+      <div class="intro-inner">
+        <h2 id="intro-heading" class="intro-title">حكمة تُوثَّق وتُشارَك</h2>
+        <p class="intro-text">
+          نقدّم حِكَم المعصومين الأربعة عشر: النبي محمد (ص)، السيدة فاطمة الزهراء (ع)، والأئمة الاثني عشر من أمير المؤمنين علي (ع) إلى الإمام المهدي (عج). الأقوال من مصادر شيعية موثوقة مع تفسير موجز. كل حكمة يمكن فتحها لقراءة التفسير وتحميل صورة جاهزة للمشاركة.
+        </p>
+      </div>
+    </section>
+
+    <!-- Main app: gallery + explore wisdom -->
+    <div id="main-view" class="page">
+      <!-- Image gallery carousel -->
+      <section id="gallery" class="gallery-section" aria-labelledby="gallery-heading">
+        <h2 id="gallery-heading" class="gallery-title">معرض الصور</h2>
+        <div class="gallery-carousel" role="region" aria-roledescription="carousel" aria-label="معرض صور">
+          <div class="gallery-track-container">
+            <ul class="gallery-track" id="gallery-track" style="--current-index: 0">
+              <li class="gallery-slide" data-index="0">
+                <img src="assets/c__Users_PC_AppData_Roaming_Cursor_User_workspaceStorage_110188a38f0425c2055f5df42d7ff4d9_images_IMAM_ALI-ccc0307c-74ca-439e-8ae3-551c58ad16bc.png" alt="من أعمال فنية تمثل أمير المؤمنين (ع)" loading="lazy" />
+              </li>
+              <li class="gallery-slide" data-index="1">
+                <img src="assets/c__Users_PC_AppData_Roaming_Cursor_User_workspaceStorage_110188a38f0425c2055f5df42d7ff4d9_images_Imam_ali2-a66bdd48-f482-427d-82f7-4c64836ba615.png" alt="من أعمال فنية تمثل أمير المؤمنين (ع)" loading="lazy" />
+              </li>
+              <li class="gallery-slide" data-index="2">
+                <img src="assets/c__Users_PC_AppData_Roaming_Cursor_User_workspaceStorage_110188a38f0425c2055f5df42d7ff4d9_images_Imamali3-2a7d524b-a961-46c8-8e06-0f1ea102fea6.png" alt="من أعمال فنية تمثل أمير المؤمنين (ع)" loading="lazy" />
+              </li>
+              <li class="gallery-slide" data-index="3">
+                <img src="assets/c__Users_PC_AppData_Roaming_Cursor_User_workspaceStorage_110188a38f0425c2055f5df42d7ff4d9_images_Imamali4-8386e6ae-69e4-4a03-9c01-f5210e30f47c.png" alt="من أعمال فنية تمثل أمير المؤمنين (ع)" loading="lazy" />
+              </li>
+            </ul>
+          </div>
+          <button type="button" class="gallery-btn gallery-btn--prev" aria-label="الصورة السابقة" id="gallery-prev">
+            <span aria-hidden="true">‹</span>
+          </button>
+          <button type="button" class="gallery-btn gallery-btn--next" aria-label="الصورة التالية" id="gallery-next">
+            <span aria-hidden="true">›</span>
+          </button>
+          <div class="gallery-dots" role="tablist" aria-label="اختيار صورة" id="gallery-dots"></div>
+        </div>
+      </section>
+
+      <section id="explore" class="explore-section" aria-labelledby="explore-heading">
+        <h2 id="explore-heading" class="explore-title">استكشف الحِكَم</h2>
+        <div class="main">
+          <section class="controls" aria-label="اختيار الحكمة">
+            <label class="filter-label" for="person-filter">اختيار الراوي:</label>
+            <select id="person-filter" class="filter-select">
+              <option value="">جميع المعصومين (ع)</option>
+              <option value="prophet">النبي محمد (ص)</option>
+              <option value="fatima">فاطمة الزهراء (ع)</option>
+              <option value="imam_ali">أمير المؤمنين علي بن أبي طالب (ع)</option>
+              <option value="imam_hasan">الإمام الحسن المجتبى (ع)</option>
+              <option value="imam_hussain">الإمام الحسين (ع)</option>
+              <option value="imam_sajjad">الإمام علي زين العابدين (ع)</option>
+              <option value="imam_baqir">الإمام محمد الباقر (ع)</option>
+              <option value="imam_sadiq">الإمام جعفر الصادق (ع)</option>
+              <option value="imam_kadhim">الإمام موسى الكاظم (ع)</option>
+              <option value="imam_rida">الإمام علي الرضا (ع)</option>
+              <option value="imam_jawad">الإمام محمد الجواد (ع)</option>
+              <option value="imam_hadi">الإمام علي الهادي (ع)</option>
+              <option value="imam_askari">الإمام الحسن العسكري (ع)</option>
+              <option value="imam_mahdi">الإمام المهدي (عج)</option>
+            </select>
+
+            <label class="filter-label" for="topic-filter">الموضوع:</label>
+            <select id="topic-filter" class="filter-select">
+              <option value="">جميع المواضيع</option>
+              <option value="sabr">الصبر</option>
+              <option value="hikma">الحكمة</option>
+              <option value="ilm">العلم</option>
+              <option value="leadership">القيادة</option>
+              <option value="wealth">المال</option>
+              <option value="akhlaq">الأخلاق</option>
+              <option value="tawadu">التواضع</option>
+              <option value="quwa">القوة</option>
+              <option value="life">الحياة</option>
+              <option value="work">العمل</option>
+            </select>
+
+            <button id="new-quote-btn" class="primary-button" type="button">
+              حكمة جديدة
+            </button>
+          </section>
+
+          <section id="quote-card" class="quote-card quote-card--clickable" aria-live="polite" role="button" tabindex="0">
+            <p id="quote-text" class="quote-text">
+              <!-- سيتم تحميل الحكمة هنا -->
+            </p>
+            <p id="quote-person" class="quote-person"></p>
+            <p id="quote-source" class="quote-source"></p>
+            <span class="quote-card-hint">اضغط لفتح الحكمة وتفسيرها</span>
+          </section>
+        </div>
+      </section>
+
+      <!-- Topic Explorer -->
+      <section id="topics" class="topics-section" aria-labelledby="topics-heading">
+        <div class="topics-header">
+          <h2 id="topics-heading" class="topics-title">استكشاف المواضيع</h2>
+          <p class="topics-subtitle">
+            تصفّح الحِكَم بحسب الموضوعات والحاجات الحياتية؛ من الصبر والعلم إلى الأخلاق والعمل.
+          </p>
+        </div>
+        <div class="topic-grid" role="list">
+          <button type="button" class="topic-card" data-topic-key="sabr" role="listitem">
+            <div class="topic-card-body">
+              <h3 class="topic-card-title">الصبر</h3>
+              <p class="topic-card-description">حِكَم عن الصبر على البلاء، وطول النفس في طريق الطاعة، والثبات عند الشدائد.</p>
+            </div>
+          </button>
+          <button type="button" class="topic-card" data-topic-key="hikma" role="listitem">
+            <div class="topic-card-body">
+              <h3 class="topic-card-title">الحكمة</h3>
+              <p class="topic-card-description">تأملات عميقة في معنى الحكمة، ميزان الكلام، وبناء البصيرة في حياة المؤمن.</p>
+            </div>
+          </button>
+          <button type="button" class="topic-card" data-topic-key="ilm" role="listitem">
+            <div class="topic-card-body">
+              <h3 class="topic-card-title">العلم</h3>
+              <p class="topic-card-description">حِكَم تشجّع على طلب العلم، وبيان شرف الفقيه والعالم وبصيرة القلب.</p>
+            </div>
+          </button>
+          <button type="button" class="topic-card" data-topic-key="leadership" role="listitem">
+            <div class="topic-card-body">
+              <h3 class="topic-card-title">القيادة</h3>
+              <p class="topic-card-description">معاني القدوة والإمامة، ومسؤولية من يتصدر للناس في القول والعمل.</p>
+            </div>
+          </button>
+          <button type="button" class="topic-card" data-topic-key="wealth" role="listitem">
+            <div class="topic-card-body">
+              <h3 class="topic-card-title">المال</h3>
+              <p class="topic-card-description">نظرة متوازنة للمال؛ نعمة ومسؤولية، والإنفاق في سبيل الله وخدمة الخلق.</p>
+            </div>
+          </button>
+          <button type="button" class="topic-card" data-topic-key="akhlaq" role="listitem">
+            <div class="topic-card-body">
+              <h3 class="topic-card-title">الأخلاق</h3>
+              <p class="topic-card-description">أقوال في الصدق والحياء والرفق وحسن المعاشرة وبناء النفس على المكارم.</p>
+            </div>
+          </button>
+          <button type="button" class="topic-card" data-topic-key="tawadu" role="listitem">
+            <div class="topic-card-body">
+              <h3 class="topic-card-title">التواضع</h3>
+              <p class="topic-card-description">حِكَم عن خفض الجناح، وكسر الكِبر، وفضل من لا يرى لنفسه فضلاً على أحد.</p>
+            </div>
+          </button>
+          <button type="button" class="topic-card" data-topic-key="quwa" role="listitem">
+            <div class="topic-card-body">
+              <h3 class="topic-card-title">القوة</h3>
+              <p class="topic-card-description">القوة في العزّة والشجاعة وضبط الهوى، لا في الظلم ولا في كسر الآخرين.</p>
+            </div>
+          </button>
+          <button type="button" class="topic-card" data-topic-key="life" role="listitem">
+            <div class="topic-card-body">
+              <h3 class="topic-card-title">الحياة</h3>
+              <p class="topic-card-description">نظرات في معنى الحياة الطيبة، قيمة الإنسان، وكيف يُصنع المعنى في العمر.</p>
+            </div>
+          </button>
+          <button type="button" class="topic-card" data-topic-key="work" role="listitem">
+            <div class="topic-card-body">
+              <h3 class="topic-card-title">العمل</h3>
+              <p class="topic-card-description">الحثّ على العمل الجاد، وبيان أن العمل بالعلم أساس الفلاح في الدارين.</p>
+            </div>
+          </button>
+        </div>
+      </section>
+
+      <!-- About -->
+      <section id="about" class="about-section" aria-labelledby="about-heading">
+        <div class="about-inner">
+          <h2 id="about-heading" class="about-title">من نحن</h2>
+          <p class="about-text">
+            منصة بسيطة تهدف إلى تقريب حِكَم المعصومين الأربعة عشر (ع) من القارئ: النبي محمد (ص)، فاطمة الزهراء (ع)، والأئمة الاثنا عشر. الاعتماد على مصادر شيعية موثوقة مثل <strong>نهج البلاغة</strong> و<strong>الكافي</strong> و<strong>تحف العقول</strong> و<strong>بحار الأنوار</strong>. النصوص مع ذكر المصادر، والتفسير موجز لاستيعاب المعنى.
+          </p>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <p class="footer-text">
+          النصوص من مصادر شيعية موثوقة مثل
+          <span class="source-name">نهج البلاغة</span> وكتب الحديث المعتمدة.
+        </p>
+      </footer>
+    </div>
+    </div>
+    <!-- End landing-view -->
+
+    <!-- Topic Page (one topic with its Hikam) -->
+    <div id="topic-page" class="topic-page" hidden>
+      <div class="topic-page-inner">
+        <a id="topic-back" class="topic-back" href="#topics">← العودة إلى استكشاف المواضيع</a>
+
+        <section class="topic-header-section" aria-labelledby="topic-title">
+          <h2 id="topic-title" class="topic-page-title"></h2>
+          <p id="topic-description" class="topic-page-description"></p>
+        </section>
+
+        <section class="topic-hikam-section" aria-label="الحِكَم المرتبطة بالموضوع">
+          <div id="topic-hikam-list" class="topic-hikam-list" aria-live="polite"></div>
+        </section>
+      </div>
+    </div>
+
+    <!-- Full Hikma page (hidden by default) -->
+    <div id="hikma-page" class="hikma-page" hidden>
+      <div class="hikma-page-inner">
+        <a id="hikma-back" class="hikma-back" href="#">← العودة</a>
+
+        <section class="hikma-tafseer" aria-labelledby="tafseer-heading">
+          <h2 id="tafseer-heading" class="hikma-tafseer-title">التفسير والمعنى</h2>
+          <p id="hikma-tafseer-text" class="hikma-tafseer-text"></p>
+          <p id="hikma-source" class="hikma-source"></p>
+        </section>
+
+        <section class="hikma-share-section" aria-label="تصميم للمشاركة">
+          <h2 class="hikma-share-title">شارك الحكمة</h2>
+          <p class="hikma-share-desc">تصميم جاهز للمشاركة على إنستغرام (مربع)</p>
+          <div class="hikma-design-settings" aria-label="إعدادات التصميم">
+            <span class="hikma-palette-label" id="hikma-palette-label">لوحة الألوان</span>
+            <div class="hikma-palette-selector" role="group" aria-labelledby="hikma-palette-label">
+              <input type="radio" name="hikma-palette" id="hikma-palette-classic" value="classic" checked />
+              <label for="hikma-palette-classic">أبيض وأسود</label>
+              <input type="radio" name="hikma-palette" id="hikma-palette-emerald" value="emerald" />
+              <label for="hikma-palette-emerald">زمرد وذهبي</label>
+              <input type="radio" name="hikma-palette" id="hikma-palette-cream" value="cream" />
+              <label for="hikma-palette-cream">كريمي وأخضر</label>
+              <input type="radio" name="hikma-palette" id="hikma-palette-sand" value="sand" />
+              <label for="hikma-palette-sand">رمل وبني</label>
+              <input type="radio" name="hikma-palette" id="hikma-palette-navy" value="navy" />
+              <label for="hikma-palette-navy">كحلي وفضي</label>
+            </div>
+          </div>
+          <div class="hikma-instagram-card-wrapper">
+            <div id="hikma-instagram-card" class="hikma-instagram-card" data-palette="classic">
+              <div class="hikma-instagram-card-inner">
+                <div class="hikma-instagram-content">
+                  <p id="hikma-instagram-text" class="hikma-instagram-text"></p>
+                  <p id="hikma-instagram-person" class="hikma-instagram-person"></p>
+                </div>
+                <span class="hikma-instagram-logo" aria-hidden="true">حكم</span>
+              </div>
+            </div>
+          </div>
+          <button id="hikma-download-btn" class="primary-button hikma-download-btn" type="button">
+            تحميل الصورة للمشاركة
+          </button>
+
+          <section class="hikma-wallpaper-section" aria-label="مولّد الخلفيات">
+            <h2 class="hikma-wallpaper-title">مولّد الخلفيات</h2>
+            <p class="hikma-wallpaper-desc">أنشئ خلفية هاتف أو كمبيوتر من الحكمة بتصميم أنيق وجاهز للتحميل.</p>
+            <div class="hikma-wallpaper-settings">
+              <div class="hikma-wallpaper-format" role="group" aria-labelledby="wallpaper-format-label">
+                <span id="wallpaper-format-label" class="hikma-wallpaper-label">الشكل</span>
+                <div class="hikma-wallpaper-format-options">
+                  <input type="radio" name="hikma-wallpaper-format" id="wallpaper-format-iphone" value="iphone" checked />
+                  <label for="wallpaper-format-iphone">آيفون (عمودي)</label>
+                  <input type="radio" name="hikma-wallpaper-format" id="wallpaper-format-desktop" value="desktop" />
+                  <label for="wallpaper-format-desktop">كمبيوتر (أفقي)</label>
+                </div>
+              </div>
+              <div class="hikma-wallpaper-resolution" id="wallpaper-resolution-wrap" hidden aria-hidden="true">
+                <span class="hikma-wallpaper-label">الدقة</span>
+                <select id="wallpaper-resolution" class="filter-select" aria-label="دقة خلفية الكمبيوتر">
+                  <option value="2560x1440">2560 × 1440</option>
+                  <option value="1920x1080">1920 × 1080</option>
+                </select>
+              </div>
+              <p class="hikma-wallpaper-palette-note">تُستخدم نفس لوحة الألوان أعلاه.</p>
+            </div>
+            <button id="hikma-wallpaper-btn" class="primary-button hikma-wallpaper-btn" type="button">
+              إنشاء وتحميل الخلفية
+            </button>
+          </section>
+        </section>
+      </div>
+    </div>
+
+    <!-- Off-screen wallpaper canvas (for capture); dimensions set by JS -->
+    <div id="hikma-wallpaper-source" class="hikma-wallpaper-source" aria-hidden="true" hidden></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGbGcp9iG8NDqG5b2W/pBYZdPA2N8FM2A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="./script.js"></script>
+  </body>
+</html>
+
