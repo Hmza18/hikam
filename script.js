@@ -6,10 +6,6 @@
 (function () {
   "use strict";
 
-  function getSupabaseClient() {
-    return window.supabaseClient || null;
-  }
-
   const quotes = [
     {
       id: 1,
@@ -1116,37 +1112,6 @@
     renderQuote(quote);
   }
 
-  async function handleLoginClick() {
-    const supabase = getSupabaseClient();
-    if (!supabase) {
-      console.warn("Supabase client not available on window.supabaseClient");
-      alert("تسجيل الدخول غير مُهيّأ بعد. تأكد من إعداد مفاتيح Supabase في الصفحة.");
-      return;
-    }
-    const email = prompt("أدخل البريد الإلكتروني المسجَّل في حسابك:");
-    if (!email) return;
-    const password = prompt("أدخل كلمة المرور:");
-    if (!password) return;
-
-    try {
-      const { data, error } = await supabase.auth.signInWithPassword({ email, password });
-      if (error) {
-        console.error("Supabase login error:", error);
-        alert("تعذّر تسجيل الدخول: " + (error.message || "خطأ غير متوقّع."));
-        return;
-      }
-
-      console.log("Supabase login success:", data);
-      alert("تم تسجيل الدخول بنجاح.");
-    } catch (e) {
-      console.error("Unexpected Supabase error:", e);
-      alert("حدث خطأ غير متوقّع أثناء تسجيل الدخول. يرجى المحاولة مرة أخرى.");
-    }
-  }
-
-  // Make login handler available for inline onclick if needed
-  window.handleLoginClick = handleLoginClick;
-
   function init() {
     quoteTextEl = document.getElementById("quote-text");
     personEl = document.getElementById("quote-person");
@@ -1174,7 +1139,6 @@
     topicTitleEl = document.getElementById("topic-title");
     topicDescriptionEl = document.getElementById("topic-description");
     topicHikamListEl = document.getElementById("topic-hikam-list");
-    var loginButton = document.getElementById("login-button");
 
     if (!quoteTextEl || !personEl || !sourceEl) return;
 
@@ -1298,9 +1262,6 @@
       });
     });
 
-    if (loginButton) {
-      loginButton.addEventListener("click", handleLoginClick);
-    }
   }
 
   /* ----- Gallery carousel ----- */
